@@ -52,29 +52,60 @@
 
 
 // target and change the inner text of the p selector
-const para = document.querySelector('p');
-console.log(para.innerText);
+// const para = document.querySelector('p');
+// console.log(para.innerText);
 
-para.innerText = 'ninjas are awesome!';
-console.log(para.innerText);
+// para.innerText = 'ninjas are awesome!';
+// console.log(para.innerText);
 
-const paras = document.querySelectorAll('p');
+// const paras = document.querySelectorAll('p');
 // loop through the p selectors inner text and add some text to each instance
-paras.forEach(para => {
-  console.log(para.innerText);
-  para.innerText += ' new text here';
-});
+// paras.forEach(para => {
+//   console.log(para.innerText);
+//   para.innerText += ' new text here';
+// });
 
 // target and change the inner html of the content class
-const content = document.querySelector('.content');
-console.log(content.innerHTML);
-content.innerHTML = "<h3> Look at me, I'm an h3! </h3>";
-console.log(content.innerHTML);
+// const content = document.querySelector('.content');
+// console.log(content.innerHTML);
+// content.innerHTML = "<h3> Look at me, I'm an h3! </h3>";
+// console.log(content.innerHTML);
 
 //  add additional <p> elements to the div with the class of content 
-const people = ['mario', 'luigi', 'yoshi'];
+// const people = ['mario', 'luigi', 'yoshi'];
 
-people.forEach(person => {
-  content.innerHTML += `<p>${person}</p>`;
-});
+// people.forEach(person => {
+//   content.innerHTML += `<p>${person}</p>`;
+// });
 
+
+// Use get and set attributes to change attributes of a selector
+const link = document.querySelector('a');
+console.log(link.getAttribute('href'));
+link.setAttribute('href', 'https://non-duality.rupertspira.com/home')
+link.innerText = 'Rupert has his say';
+
+// Use get and set attributes to change values of a class
+const message = document.querySelector('p');
+console.log(message.getAttribute('class'));
+message.setAttribute('class', 'flip-mo-squad');
+
+// create a style property where none already exists
+message.setAttribute('style', 'color: pink')
+
+
+const titleTwo = document.querySelector('h2');
+// adds the style property margin-bottom, but overrides any other style properties linked to the selected element.
+// titleTwo.setAttribute('style', 'margin-bottom: 50px;');
+
+
+// handy wat to view all the styles available and the camel case versions of double barrel style names
+console.log(titleTwo.style);
+console.log(titleTwo.style.color);
+
+// Add or overwrite styles without overriding any other style properties
+titleTwo.style.padding = '50px';
+titleTwo.style.color = 'crimson';
+
+
+titleTwo.style.fontSize = '1.5em';

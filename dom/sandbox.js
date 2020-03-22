@@ -80,32 +80,55 @@
 
 
 // Use get and set attributes to change attributes of a selector
-const link = document.querySelector('a');
-console.log(link.getAttribute('href'));
-link.setAttribute('href', 'https://non-duality.rupertspira.com/home')
-link.innerText = 'Rupert has his say';
+// const link = document.querySelector('a');
+// console.log(link.getAttribute('href'));
+// link.setAttribute('href', 'https://non-duality.rupertspira.com/home')
+// link.innerText = 'Rupert has his say';
 
 // Use get and set attributes to change values of a class
-const message = document.querySelector('p');
-console.log(message.getAttribute('class'));
-message.setAttribute('class', 'flip-mo-squad');
+// const message = document.querySelector('p');
+// console.log(message.getAttribute('class'));
+// message.setAttribute('class', 'flip-mo-squad');
 
 // create a style property where none already exists
-message.setAttribute('style', 'color: pink')
+// message.setAttribute('style', 'color: pink')
 
 
-const titleTwo = document.querySelector('h2');
+// const titleTwo = document.querySelector('h2');
 // adds the style property margin-bottom, but overrides any other style properties linked to the selected element.
 // titleTwo.setAttribute('style', 'margin-bottom: 50px;');
 
 
 // handy wat to view all the styles available and the camel case versions of double barrel style names
-console.log(titleTwo.style);
-console.log(titleTwo.style.color);
+// console.log(titleTwo.style);
+// console.log(titleTwo.style.color);
 
 // Add or overwrite styles without overriding any other style properties
-titleTwo.style.padding = '50px';
-titleTwo.style.color = 'crimson';
+// titleTwo.style.padding = '50px';
+// titleTwo.style.color = 'crimson';
+// titleTwo.style.fontSize = '1.5em';
 
+// assign p to a variable, output the classes associated with p, add a class to p, remove a class from p
+// const content = document.querySelector('p');
+// console.log(content.classList);
+// content.classList.add('error');
+// content.classList.remove('error');
+// content.classList.add('success');
 
-titleTwo.style.fontSize = '1.5em';
+// get all p tags and set them to the paras variable, use the forEach method to target certain text content in the paragraphs and add class styles when the text is present
+const paras = document.querySelectorAll('p');
+
+paras.forEach(p => {
+  if(p.textContent.includes('error')){
+    p.classList.add('error');
+  }
+  if(p.textContent.includes('success')){
+    p.classList.add('success');
+  }
+});
+
+// toggle a class on and off, add the class test on toggle, remove the class test on toggle
+const name = document.querySelector('.name');
+
+name.classList.toggle('test')
+name.classList.toggle('test')

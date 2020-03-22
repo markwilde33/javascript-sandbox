@@ -1,0 +1,10 @@
+.error{
+  padding: 10px;
+  color: orangered;
+  border: 2px solid orangered;
+}
+.success{
+  padding: 10px;
+  color: rgb(48, 223, 48);
+  border: 2px solid rgb(48, 223, 48);
+}

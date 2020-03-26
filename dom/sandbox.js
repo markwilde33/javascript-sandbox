@@ -132,3 +132,13 @@ const name = document.querySelector('.name');
 
 name.classList.toggle('test')
 name.classList.toggle('test')
+
+
+
+// parents, children & siblings
+
+const article = document.querySelector('article');
+
+console.log(article.children);
+
+console.log(Array.from(article.children));

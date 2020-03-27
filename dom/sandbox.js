@@ -128,17 +128,36 @@ paras.forEach(p => {
 });
 
 // toggle a class on and off, add the class test on toggle, remove the class test on toggle
-const name = document.querySelector('.name');
+// const name = document.querySelector('.name');
 
-name.classList.toggle('test')
-name.classList.toggle('test')
+// name.classList.toggle('test')
+// name.classList.toggle('test')
 
 
 
 // parents, children & siblings
-
 const article = document.querySelector('article');
 
-console.log(article.children);
+// console.log(article.children);
+// console.log(Array.from(article.children));     
 
-console.log(Array.from(article.children));
+// get an array from the html collection and add a class to each element
+// Array.from(article.children).forEach(child => {
+//   child.classList.add('article-element');
+// });
+
+
+// find the parent of an element using .parentElement, can string together to move uo the DOM tree, useful if you don't know what the parent elements are
+const title = document.querySelector('h2');
+
+console.log(title.parentElement);
+console.log(title.parentElement.parentElement);
+
+// find the next sibling of an element using .nextElementSibling
+console.log(title.nextElementSibling);
+
+// find the previous sibling of an element using .previousElementSibling
+console.log(title.previousElementSibling);
+
+// more chaining 
+console.log(title.previousElementSibling.parentElement.children);

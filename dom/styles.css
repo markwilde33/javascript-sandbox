@@ -8,3 +8,12 @@
   color: rgb(48, 223, 48);
   border: 2px solid rgb(48, 223, 48);
 }
+
+li { 
+  list-style-type: none;
+  max-width: 200px;
+  padding: 8px;
+  margin: 8px auto;
+  background: #eee;
+  border: 1px dotted #ddd;
+}

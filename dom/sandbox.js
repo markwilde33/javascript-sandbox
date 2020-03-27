@@ -116,16 +116,16 @@
 // content.classList.add('success');
 
 // get all p tags and set them to the paras variable, use the forEach method to target certain text content in the paragraphs and add class styles when the text is present
-const paras = document.querySelectorAll('p');
+// const paras = document.querySelectorAll('p');
 
-paras.forEach(p => {
-  if(p.textContent.includes('error')){
-    p.classList.add('error');
-  }
-  if(p.textContent.includes('success')){
-    p.classList.add('success');
-  }
-});
+// paras.forEach(p => {
+//   if(p.textContent.includes('error')){
+//     p.classList.add('error');
+//   }
+//   if(p.textContent.includes('success')){
+//     p.classList.add('success');
+//   }
+// });
 
 // toggle a class on and off, add the class test on toggle, remove the class test on toggle
 // const name = document.querySelector('.name');
@@ -136,7 +136,7 @@ paras.forEach(p => {
 
 
 // parents, children & siblings
-const article = document.querySelector('article');
+// const article = document.querySelector('article');
 
 // console.log(article.children);
 // console.log(Array.from(article.children));     
@@ -148,16 +148,40 @@ const article = document.querySelector('article');
 
 
 // find the parent of an element using .parentElement, can string together to move uo the DOM tree, useful if you don't know what the parent elements are
-const title = document.querySelector('h2');
+// const title = document.querySelector('h2');
 
-console.log(title.parentElement);
-console.log(title.parentElement.parentElement);
+// console.log(title.parentElement);
+// console.log(title.parentElement.parentElement);
 
 // find the next sibling of an element using .nextElementSibling
-console.log(title.nextElementSibling);
+// console.log(title.nextElementSibling);
 
 // find the previous sibling of an element using .previousElementSibling
-console.log(title.previousElementSibling);
+// console.log(title.previousElementSibling);
 
 // more chaining 
-console.log(title.previousElementSibling.parentElement.children);
+// console.log(title.previousElementSibling.parentElement.children);
+
+
+// use .addEventListener to output a message when the button is clicked
+// const button = document.querySelector('button');
+
+// button.addEventListener('click', () => {
+//   console.log('you clicked me');
+// });
+
+
+// cycle through a list of items and use the event listener to add a style on click
+const items = document.querySelectorAll('li');
+
+items.forEach(item => {
+  item.addEventListener('click', e => {
+    // console.log('List item has been clicked!, who dares click my items? speak! SPEAK!!')
+    // console.log(e);
+    // shows which element is being targeted by the event listener
+    
+    // console.log(e.target);
+    // console.log(item);
+    e.target.style.textDecoration = 'line-through';
+  })
+});

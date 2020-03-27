@@ -172,16 +172,42 @@
 
 
 // cycle through a list of items and use the event listener to add a style on click
-const items = document.querySelectorAll('li');
+// const items = document.querySelectorAll('li');
 
-items.forEach(item => {
-  item.addEventListener('click', e => {
+// items.forEach(item => {
+//   item.addEventListener('click', e => {
+
     // console.log('List item has been clicked!, who dares click my items? speak! SPEAK!!')
     // console.log(e);
+
     // shows which element is being targeted by the event listener
-    
     // console.log(e.target);
     // console.log(item);
-    e.target.style.textDecoration = 'line-through';
-  })
+    // add a style to an item on click
+    // e.target.style.textDecoration = 'line-through';
+     // remove the  element targeted by the event listener
+//      e.target.remove();
+//   })
+// });
+
+
+// Create a new list item in the ul when the button is clicked and append it to the bottom of the list
+const ul = document.querySelector('ul');
+
+const buttons = document.querySelector('button');
+
+buttons.addEventListener('click', () => {
+    //option 1
+    // ul.innerHTML += '<li>something new to do</li>'
+    //option 2
+    const li = document.createElement('li');
+    li.textContent = 'something new to do';
+    // put at the bottom of the list
+    ul.append(li);
+    // put at the top of the list
+    // ul.prepend(li);
 });
+
+
+
+

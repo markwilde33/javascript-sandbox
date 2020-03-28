@@ -192,22 +192,46 @@
 
 
 // Create a new list item in the ul when the button is clicked and append it to the bottom of the list
+// const ul = document.querySelector('ul');
+
+// const buttons = document.querySelector('button');
+
+// buttons.addEventListener('click', () => {
+//     //option 1
+//     // ul.innerHTML += '<li>something new to do</li>'
+//     //option 2
+//     const li = document.createElement('li');
+//     li.textContent = 'something new to do';
+//     // put at the bottom of the list
+//     ul.append(li);
+//     // put at the top of the list
+//     // ul.prepend(li);
+// });
+
+
+// event bubbling
+
 const ul = document.querySelector('ul');
+const button = document.querySelector('button');
 
-const buttons = document.querySelector('button');
-
-buttons.addEventListener('click', () => {
-    //option 1
-    // ul.innerHTML += '<li>something new to do</li>'
-    //option 2
-    const li = document.createElement('li');
-    li.textContent = 'something new to do';
-    // put at the bottom of the list
-    ul.append(li);
-    // put at the top of the list
-    // ul.prepend(li);
+button.addEventListener('click', () => {
+  const li = document.createElement('li');
+  li.textContent = ' this is a new list item';
+  ul.append(li);
 });
 
+const items = document.querySelectorAll('li');
 
-
+items.forEach(item => {
+  item.addEventListener('click', event => {
+  event.target.style.backgroundColor = 'red';
+  console.log('this is an event in the LI element');
+  // use this method to stop the event from bubbling up to the parent element
+  event.stopPropagation();
+  });
+});
+// added a simple event to the ul to show event bubbling in action, when an li event is triggered the event 'bubbles up'  to the parent ul element and also fires the ul event automatically
+ul.addEventListener('click', event => {
+  console.log('this is an event in the UL element');
+})
 

@@ -211,14 +211,14 @@
 
 // event bubbling
 
-const ul = document.querySelector('ul');
-const button = document.querySelector('button');
+// const ul = document.querySelector('ul');
+// const button = document.querySelector('button');
 
-button.addEventListener('click', () => {
-  const li = document.createElement('li');
-  li.textContent = ' this is a new list item';
-  ul.append(li);
-});
+// button.addEventListener('click', () => {
+//   const li = document.createElement('li');
+//   li.textContent = ' this is a new list item';
+//   ul.append(li);
+// });
 
 // const items = document.querySelectorAll('li');
 
@@ -240,9 +240,32 @@ button.addEventListener('click', () => {
 // event delegation 
 // When an li item is clicked, although it has no event listener itself, the click event bubbles up to the parent element ul; as the ul does have an event listener, the item will be output to the console when the ul event fires, as it's a child of the ul
 // This is very useful when dynamically adding elements as they will be controlled by the parent element event listener. in this example new li elements wouldn't of been included in the forEach loop as they were added after the loop fired. by using event delegation these new li items are dynamically controlled by the parent event listener and are treated the same as the original li items
-ul.addEventListener('click', event => {
-  console.log(event.target);
-  if(event.target.tagName === 'LI'){
-  event.target.remove()
-  }
+// ul.addEventListener('click', event => {
+//   console.log(event.target);
+//   if(event.target.tagName === 'LI'){
+//   event.target.remove()
+//   }
+// });
+
+//common event types
+
+// fire the callback function when a user attempts to copy the text in the div with the class of copy-me
+const copy = document.querySelector('.copy-me');
+
+copy.addEventListener('copy', () => {
+  alert('OI!, get your own content, you crazy fool!')
 });
+
+
+// fire the callback function when a user scrolls over the div with a class of box, output the mouse pointer coordinates 
+const box = document.querySelector('.box');
+
+box.addEventListener('mousemove', e => {
+  // console.log(e.offsetX, e.offsetY);
+  box.textContent = `x position: ${e.offsetX} y position: ${e.offsetY}`;
+});
+
+// fire the callback function when a user wheel scrolls over the document, output the mouse pointer coordinates 
+document.addEventListener('wheel', e => {
+  console.log(e.pageX, e.pageY);
+})

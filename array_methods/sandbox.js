@@ -86,3 +86,17 @@ const dollTotal = toys.reduce((acc, curr) => {
 }, 0);
 
 console.log(dollTotal);
+
+// <----------------------------------------------------------------------------->
+
+// find method
+// the find() method is used to get the value of the first element in the array that satisfies the provided condition.
+
+const numbers = [20, 40, 60, 80, 100, 120];
+
+const firstHighNumber = numbers.find((number) => {
+ return number > 70;
+});
+
+
+console.log(firstHighNumber);

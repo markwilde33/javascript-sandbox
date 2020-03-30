@@ -53,3 +53,36 @@ const saleFruits = fruits.map(fruit => {
 });
 
 console.log(saleFruits);
+
+// <----------------------------------------------------------------------------->
+// reduce method
+// the reduce() method reduces the array to a single value, it executes a provided function for each value of the array (from left-to-right), the return value of the function is stored in an accumulator (result/total)
+
+const values = [20, 40, 60, 80, 100, 120];
+
+const result = values.reduce((acc, curr) => {
+  if(curr > 70){
+    acc++
+  }
+  return acc;
+
+}, 0);
+
+console.log(result);
+
+
+const toys = [
+  {type: 'doll', sold: 20},
+  {type: 'teddy', sold: 50},
+  {type: 'doll', sold: 40},
+  {type: 'boardgame', sold: 80}
+];
+
+const dollTotal = toys.reduce((acc, curr) => {
+  if (curr.type === 'doll'){
+    acc += curr.sold;
+  }
+  return acc;
+}, 0);
+
+console.log(dollTotal);

@@ -128,7 +128,7 @@ bigNumbers.reverse();
 console.log(bigNumbers);
 
 
-// example 2 - sorting strings
+// example 3 - sorting strings
 const weapons = [
   {type: 'sword', stock: 19},
   {type: 'bow', stock: 48},
@@ -152,3 +152,32 @@ const weapons = [
 weapons.sort((a,b) => b.stock - a.stock);
 
 console.log(weapons);
+
+
+// <----------------------------------------------------------------------------->
+
+// chaining array methods
+
+const weaponTypes = [
+  {type: 'sword', price: 90},
+  {type: 'bow', price: 120},
+  {type: 'axe', price: 70},
+  {type: 'spear', price: 50},
+  {type: 'mace', price: 60}
+];
+// instead of writing it like this......
+const filtered = weaponTypes.filter(weapon => weapon.price > 60);
+
+const promos  = filtered.map(weapon => {
+  return `the ${weapon.type} is ${weapon.price / 2} euros`;
+})
+
+console.log(promos)
+
+//write it like this
+const promotions  = weaponTypes
+  .filter(weapon => weapon.price > 60)
+  .map(weapon => `the ${weapon.type} is ${weapon.price / 2} euros`);
+
+  console.log(promotions)
+ 

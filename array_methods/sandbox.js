@@ -100,3 +100,55 @@ const firstHighNumber = numbers.find((number) => {
 
 
 console.log(firstHighNumber);
+
+// <----------------------------------------------------------------------------->
+
+// sort method
+// the sort() method sorts the elements of an array in place and returns the sorted array, the default sort order is ascending
+
+// example 1 - sorting strings
+const bands = ['radiohead', 'rage against the machines', 'the beach boys', 'the beatles', 'faith no more'];
+
+bands.sort();
+// descending order
+bands.reverse();
+
+console.log(bands);
+
+
+
+
+// example 2 - sorting strings
+// the sort() method reads the first number value only, so 50 will come after 100,200 & 385 as 5 is greater than 1,2 & 3, the same logic applies to reverse() in the descending order
+const bigNumbers = [100, 900, 200, 385, 50, 500, 700, 450];
+
+bigNumbers.sort();
+bigNumbers.reverse();
+
+console.log(bigNumbers);
+
+
+// example 2 - sorting strings
+const weapons = [
+  {type: 'sword', stock: 19},
+  {type: 'bow', stock: 48},
+  {type: 'axe', stock: 41},
+  {type: 'spear', stock: 33},
+  {type: 'mace', stock: 16}
+];
+
+// weapons.sort((a,b) => {
+//   if (a.stock > b.stock){
+//     return -1;
+//   } else if (b.stock > a.stock){
+//     return 1;
+//   } else {
+//     return 0;
+//   }
+// });
+
+
+// short hand
+weapons.sort((a,b) => b.stock - a.stock);
+
+console.log(weapons);

@@ -1,35 +1,35 @@
-// // dates & times
-// const now = new Date();
+// dates & times
+const now = new Date();
 
-// console.log(now);
-// console.log(typeof now);
+console.log(now);
+console.log(typeof now);
 
-// // years, months, days, times
-// console.log('getFullYear:', now.getFullYear());
-// console.log('getMonth (0-based):', now.getMonth());
-// console.log('getDate:', now.getDate());
-// console.log('getDay (0-based):', now.getDay());
-// console.log('getHours:', now.getHours());
-// console.log('getMinutes:', now.getMinutes());
-// console.log('getSeconds:', now.getSeconds());
+// years, months, days, times
+console.log('getFullYear:', now.getFullYear());
+console.log('getMonth (0-based):', now.getMonth());
+console.log('getDate:', now.getDate());
+console.log('getDay (0-based):', now.getDay());
+console.log('getHours:', now.getHours());
+console.log('getMinutes:', now.getMinutes());
+console.log('getSeconds:', now.getSeconds());
 
-// // timestamps
-// console.log('timestamp:', now.getTime());
+// timestamps
+console.log('timestamp:', now.getTime());
 
-// // date strings
-// console.log(now.toDateString());
-// console.log(now.toTimeString());
-// console.log(now.toLocaleString());
+// date strings
+console.log(now.toDateString());
+console.log(now.toTimeString());
+console.log(now.toLocaleString());
 
 // <--------------------------------------------------------------------------->
 
-// timestamps 
+// timestamps         
 //const before = new Date('02/01/2019 7:30:59');
 const before = new Date('February 1 2019 7:30:59');
-const now = new Date();
+const now2 = new Date();
 
-const diff = now.getTime() - before.getTime();
-// const diff = now - before;
+const diff = now2.getTime() - before.getTime();
+// const diff = now2 - before;
 
 console.log(diff);
 
@@ -43,4 +43,33 @@ console.log(`the before date was ${days} days ago`);
 
 // converting timestamps to dates
 const timestamp = 1675938474990;
-console.log(new Date(timestamp));
+console.log(new Date(timestamp));  
+
+
+// <--------------------------------------------------------------------------->
+
+// Build a digital clock
+
+const clock = document.querySelector('.clock');
+
+const tick = () => {
+  //construct a new date object and set it to now
+  const now = new Date();
+  
+  // get the current hours, minutes & seconds
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+  const seconds = now.getSeconds();
+
+  // create a template string to store the values
+  const html = `
+    <span>${hours}</span> :
+    <span>${minutes}</span> :
+    <span>${seconds}</span>
+  `;
+  // inject html to the div with a class of clock
+  clock.innerHTML = html;
+
+};
+// set the tick function to fire every second
+setInterval(tick, 1000);

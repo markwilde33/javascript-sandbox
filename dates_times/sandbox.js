@@ -73,3 +73,22 @@ const tick = () => {
 };
 // set the tick function to fire every second
 setInterval(tick, 1000);
+
+// working with date-fns, a javaScript date utility library
+const $now = new Date();
+
+//console.log(dateFns.isToday($now));
+
+// formatting options
+console.log(dateFns.format($now, 'YYYY'));
+console.log(dateFns.format($now, 'MMMM'));
+console.log(dateFns.format($now, 'MMM'));
+console.log(dateFns.format($now, 'dddd'));
+console.log(dateFns.format($now, 'Do'));
+console.log(dateFns.format($now, 'dddd Do MMMM YYYY'));
+
+
+// comparing dates
+const $before = new Date('April 1 2020 15:42:00')
+// more date-fns functionality
+console.log(dateFns.distanceInWords($now, $before, {addSuffix: true}));

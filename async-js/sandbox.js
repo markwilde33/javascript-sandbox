@@ -18,7 +18,10 @@ const getTodos = (callback) => {
   request.addEventListener('readystatechange', () => {
     //added a conditional to verify if the status of the request is correct, if not, return a message to inform that there is an error
     if(request.readyState === 4 && request.status === 200){
-      callback(undefined, request.responseText);
+      // convert the JSON string into an array of javascript objects
+      const data = JSON.parse(request.responseText);
+      //pass the converted data into the callback function as an argument
+      callback(undefined, data);
     } else if(request.readyState === 4){
       callback('could not get data', undefined);
     }

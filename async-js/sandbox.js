@@ -124,7 +124,15 @@ const getTodos = (resource) => {
 
 getTodos('/todos/todos.json').then(data => {
   console.log('promise resolved, we got him!:', data);
-}).catch(err => {
+  //chain multiple promises
+  return getTodos('/todos/todos2.json');
+}).then((data) => {
+  console.log('promise 2 resolved, the eagle has landed:', data)
+  return getTodos('/todos/todos3.json');
+}).then((data) => {
+  console.log('promise 3 resolved, brain coming back online:', data)
+})
+.catch(err => {
   console.log('promise rejected, this isn\'t over!:', err);
 });
   

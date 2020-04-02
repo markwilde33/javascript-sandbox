@@ -1,28 +1,39 @@
 // asynchronous javascript
 
-//rudimentary example of async javascript in action
-console.log(1);
-console.log(2);
-//trigger a callback using setTimeOut
-setTimeout(() => {
-  console.log('the callback function fired')
-}, 2000);
-console.log(3);
-console.log(4);
+// //rudimentary example of async javascript in action
+// console.log(1);
+// console.log(2);
+// //trigger a callback using setTimeOut
+// setTimeout(() => {
+//   console.log('the callback function fired')
+// }, 2000);
+// console.log(3);
+// console.log(4);
 
+// put the HTTP request logic in a reusable function add a parameter to take in a call function
+const getTodos = (callback) => {
+  
+  const request = new XMLHttpRequest();
 
+  request.addEventListener('readystatechange', () => {
+    //added a conditional to verify if the status of the request is correct, if not, return a message to inform that there is an error
+    if(request.readyState === 4 && request.status === 200){
+      callback(undefined, request.responseText);
+    } else if(request.readyState === 4){
+      callback('could not get data', undefined);
+    }
+  });
 // made a HTTP request to the JSON Placeholder API
-const request = new XMLHttpRequest();
+  request.open('GET', 'https://jsonplaceholder.typicode.com/todos/');
+  request.send();
+};
 
-request.addEventListener('readystatechange', () => {
-  //added a check to verify if the status of the request is correct, if not, return a message to inform that there is an error
-  if(request.readyState === 4 && request.status === 200){
-    console.log(request.responseText);
-  } else if(request.readyState === 4){
-    console.log('could not fetch the data');
+//  callback function with two parameters, added to the the logic of the if else conditional statement, the callback will output the data if the conditions are met, or output an error message if not
+getTodos((err, data) => {
+  if(err){
+    console.log(err);
+  } else {
+    console.log(data);
   }
 });
 
-
-request.open('GET', 'https://jsonplaceholder.typicode.com/todos/');
-request.send();

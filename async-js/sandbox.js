@@ -76,64 +76,74 @@
 // });
 
 
-// promise example
+// // promise example
 
-const getSomething = () => {
+// const getSomething = () => {
 
-  return new Promise((resolve, reject) => {
-    //fetch something, pass data in here
-    resolve('some data');
-    reject('some error');
-  });
-}
+//   return new Promise((resolve, reject) => {
+//     //fetch something, pass data in here
+//     resolve('some data');
+//     reject('some error');
+//   });
+// }
 
-getSomething().then(data => {
-  console.log(data);
-}, err => {
-  console.log(err);
-});
+// getSomething().then(data => {
+//   console.log(data);
+// }, err => {
+//   console.log(err);
+// });
 
-// different syntax
-getSomething().then(data => {
-  console.log(data);
-}).catch(err => {
-  console.log(err);
-});
+// // different syntax
+// getSomething().then(data => {
+//   console.log(data);
+// }).catch(err => {
+//   console.log(err);
+// });
 
 
-//start using promises with out function
-const getTodos = (resource) => {
+// //start using promises with out function
+// const getTodos = (resource) => {
 
-  return new Promise((resolve, reject) => {
-    const request = new XMLHttpRequest();
+//   return new Promise((resolve, reject) => {
+//     const request = new XMLHttpRequest();
 
-  request.addEventListener('readystatechange', () => {
-    if(request.readyState === 4 && request.status === 200){
-      const data = JSON.parse(request.responseText);
-      resolve(data);
-    } else if(request.readyState === 4){
-      reject('computer says no');
-    }
-  });
+//   request.addEventListener('readystatechange', () => {
+//     if(request.readyState === 4 && request.status === 200){
+//       const data = JSON.parse(request.responseText);
+//       resolve(data);
+//     } else if(request.readyState === 4){
+//       reject('computer says no');
+//     }
+//   });
 
-  request.open('GET', resource);
-  request.send();
-});
+//   request.open('GET', resource);
+//   request.send();
+// });
 
-};
-
-getTodos('/todos/todos.json').then(data => {
-  console.log('promise resolved, we got him!:', data);
-  //chain multiple promises
-  return getTodos('/todos/todos2.json');
-}).then((data) => {
-  console.log('promise 2 resolved, the eagle has landed:', data)
-  return getTodos('/todos/todos3.json');
-}).then((data) => {
-  console.log('promise 3 resolved, brain coming back online:', data)
-})
-.catch(err => {
-  console.log('promise rejected, this isn\'t over!:', err);
-});
+// };
+// //if the promise is correct, if it has passed the if conditional of readyState === 4 and status === 200, then it is resolved, from here, we can return the resolved promise inside the current code block, the promise is now completed/done/finished so now we can do something else. We can use the then() method to give another instruction, and so we add or 'chain' another promise
+// getTodos('/todos/todos.json').then(data => {
+//   console.log('promise resolved, we got him!:', data);
+//   //chain multiple promises
+//   return getTodos('/todos/todos2.json');
+// }).then((data) => {
+//   console.log('promise 2 resolved, the eagle has landed:', data)
+//   return getTodos('/todos/todos3.json');
+// }).then((data) => {
+//   console.log('promise 3 resolved, brain coming back online:', data)
+// })
+// .catch(err => {
+//   console.log('promise rejected, this isn\'t over!:', err);
+// });
   
-  
+
+// fetch api
+
+fetch('/todos/todos2.json').then((response) => {
+  console.log('resolved', response);
+  return response.json();
+}).then(data => {
+  console.log(data);
+}).catch((err) => {
+console.log('rejected', err);
+});

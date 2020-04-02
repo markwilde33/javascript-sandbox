@@ -42,35 +42,90 @@
 
 
 
-// put the HTTP request logic in a reusable function add two parameters for the callback function
-const getTodos = (resource,callback) => {
+// // put the HTTP request logic in a reusable function add two parameters for the callback function, added resource argument to take in our local JSON files
+// const getTodos = (resource,callback) => {
   
-  const request = new XMLHttpRequest();
+//   const request = new XMLHttpRequest();
+
+//   request.addEventListener('readystatechange', () => {
+//     //added a conditional to verify if the status of the request is correct, if not, return a message to inform that there is an error
+//     if(request.readyState === 4 && request.status === 200){
+//       // convert the JSON string into an array of javascript objects
+//       const data = JSON.parse(request.responseText);
+//       //pass the converted data into the callback function as an argument
+//       callback(undefined, data);
+//     } else if(request.readyState === 4){
+//       callback('could not get data', undefined);
+//     }
+//   });
+// // made a HTTP request 
+//   request.open('GET', resource);
+//   request.send();
+// };
+
+// //  callback function with two  arguments including a function with two parameters, added to the the logic of the if else conditional statement, the callback will output the data if the conditions are met, or output an error message if not; the first argument is used to access our resources, which are the todo files in the todo folder
+// getTodos('/todos/todos2.json',(err, data) => {
+//   console.log(data);
+//   getTodos('/todos/todos3.json',(err, data) => {
+//     console.log(data);
+//     getTodos('/todos/todos.json',(err, data) => {
+//       console.log(data);
+      
+//     });
+//   });
+// });
+
+
+// promise example
+
+const getSomething = () => {
+
+  return new Promise((resolve, reject) => {
+    //fetch something, pass data in here
+    resolve('some data');
+    reject('some error');
+  });
+}
+
+getSomething().then(data => {
+  console.log(data);
+}, err => {
+  console.log(err);
+});
+
+// different syntax
+getSomething().then(data => {
+  console.log(data);
+}).catch(err => {
+  console.log(err);
+});
+
+
+//start using promises with out function
+const getTodos = (resource) => {
+
+  return new Promise((resolve, reject) => {
+    const request = new XMLHttpRequest();
 
   request.addEventListener('readystatechange', () => {
-    //added a conditional to verify if the status of the request is correct, if not, return a message to inform that there is an error
     if(request.readyState === 4 && request.status === 200){
-      // convert the JSON string into an array of javascript objects
       const data = JSON.parse(request.responseText);
-      //pass the converted data into the callback function as an argument
-      callback(undefined, data);
+      resolve(data);
     } else if(request.readyState === 4){
-      callback('could not get data', undefined);
+      reject('computer says no');
     }
   });
-// made a HTTP request 
+
   request.open('GET', resource);
   request.send();
+});
+
 };
 
-//  callback function with two  arguments including a function with two parameters, added to the the logic of the if else conditional statement, the callback will output the data if the conditions are met, or output an error message if not; the first argument is used to access our resources, which are the todo files in the todo folder
-getTodos('/todos/todos2.json',(err, data) => {
-  console.log(data);
-  getTodos('/todos/todos3.json',(err, data) => {
-    console.log(data);
-    getTodos('/todos/todos.json',(err, data) => {
-      console.log(data);
-      
-    });
-  });
+getTodos('/todos/todos.json').then(data => {
+  console.log('promise resolved, we got him!:', data);
+}).catch(err => {
+  console.log('promise rejected, this isn\'t over!:', err);
 });
+  
+  

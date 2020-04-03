@@ -139,11 +139,23 @@
 
 // fetch api
 
-fetch('/todos/todos2.json').then((response) => {
-  console.log('resolved', response);
-  return response.json();
-}).then(data => {
-  console.log(data);
-}).catch((err) => {
-console.log('rejected', err);
-});
+// fetch('/todos/todos2.json').then((response) => {
+//   console.log('resolved', response);
+//   return response.json();
+// }).then(data => {
+//   console.log(data);
+// }).catch((err) => {
+// console.log('rejected', err);
+// });
+
+
+// async & await -- chain promises together in a clean & readable way
+
+const getTodos = async () => {
+  const response = await fetch('/todos/todos2.json');
+  const data = await response.json();
+  return data;
+};
+
+getTodos()
+.then(data => console.log('resolved:', data));

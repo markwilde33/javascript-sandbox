@@ -151,11 +151,20 @@
 
 // async & await -- chain promises together in a clean & readable way
 
+
 const getTodos = async () => {
-  const response = await fetch('/todos/todos2.json');
-  const data = await response.json();
+
+  let response = await fetch('/todos/todos.json');
+
+  if(response.status !== 200){
+    throw new Error('cannot fetch the data');
+  }
+
+  let data = await response.json();
   return data;
+
 };
 
 getTodos()
-.then(data => console.log('resolved:', data));
+  .then(data => console.log('resolved:', data))
+  .catch(err => console.log('rejected:', err.message));

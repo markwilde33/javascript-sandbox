@@ -16,3 +16,11 @@ name=localStorage.getItem('name');
 age=localStorage.getItem('age');
 
 console.log([name, age]);
+
+
+// delete data from local storage
+// localStorage.removeItem('name');
+localStorage.clear();
+name=localStorage.getItem('name');
+age=localStorage.getItem('age');
+console.log(name);

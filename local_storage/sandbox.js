@@ -24,3 +24,23 @@ localStorage.clear();
 name=localStorage.getItem('name');
 age=localStorage.getItem('age');
 console.log(name);
+
+// stringifying & parsing data
+const todos = [
+  [
+    {"text": "play dark souls", "author": "santa claus"},
+    {"text": "play civ IV", "author": "sid meier"},
+    {"text": "play my little pony", "author": "freddy kruger"}
+  ]     
+];
+//log to console
+console.log(JSON.stringify(todos));
+
+// stringify and store in localStorage
+localStorage.setItem('todos', JSON.stringify(todos));
+
+const stored = localStorage.getItem('todos');
+
+// parse and output array to console
+console.log(JSON.parse(stored));
+

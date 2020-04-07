@@ -55,3 +55,33 @@ console.log(users);
 userThree.deleteUser(userThree);
 console.log(users);
 console.log(userThree);
+
+
+// constructor functions 
+
+// class Fruit {
+//   constructor(name, color){
+//     //set up properties
+//     this.name = name;
+//     this.color = color;
+//   }
+// }
+
+// write the code without using classes
+function Fruit(name, color){
+  this.name = name;
+  this.color = color;
+  this.partyTime = function(){
+    console.log(`This ${this.name} is ready to party! yeah baby yeah!`);
+    return this
+  };
+}
+
+
+
+const fruitOne = new Fruit('banana', 'yellow');
+const fruitTwo = new Fruit('apple', 'green');
+
+console.log(fruitOne, fruitTwo);
+fruitOne.partyTime().partyTime();
+fruitTwo.partyTime().partyTime();

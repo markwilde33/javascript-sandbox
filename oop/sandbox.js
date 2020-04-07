@@ -1,23 +1,9 @@
 // oop
 
-// //create a simple object, log to console
-// const userOne = {
-//   username: 'Sam',
-//   email: 'sam@sam.com',
-//   login(){
-//     console.log('the user logged in');
-//   },
-//   logout(){
-//     console.log('the user logged in');
-//   },
-// }
-
-// console.log(userOne.email, userOne.username);
-// userOne.login();
-// userOne.logout();
-
-// const userTwo = new userOne('Cherie', 'cherie@gmail.com');
-
+// the 'new' keyword
+// 1. it creates a new empty object {}
+// 2 - it binds the value of 'this', when it's used in the class constructor, to the new empty object
+// 3 - it calls the construction function to 'build' the object
 
 // create a class with a constructor function
 class User {
@@ -44,19 +30,22 @@ class User {
   }
 }
 
-// the 'new' keyword
-// 1. it creates a new empty object {}
-// 2 - it binds the value of 'this', when it's used in the class constructor, to the new empty object
-// 3 - it calls the construction function to 'build' the object
-
+// class inheritance, extends the user class & has its own properties and methods also
+class Admin extends User{
+  deleteUser(user){
+    //use the filter method to delete a user, cycle through the array, if the current username is not equal to the username given as an argument, then it is true and stays in the array, if its equal then its false, and gets deleted
+    users = users.filter(u => u.username !== user.username);
+  }
+}
 
 //create a new user object, or 'an instance of the user class'
 const userOne = new User('cherie', 'cherie@gmail.com');
-const userTwo = new User('sparky', 'spky@gmail.com')
+const userTwo = new User('sparky', 'spky@gmail.com');
+//create a new admin object, or 'an instance of the admin class'
+const userThree = new Admin('admin', 'admin@admin.com')
 
-// chain methods
-console.log(userOne, userTwo);
-userOne.login().logout();
-userTwo.login().logout();
-userOne.incScore().incScore().incScore();
-userTwo.incScore().incScore().incScore();
+let users = [userOne, userTwo, userThree];
+console.log(users);
+
+userThree.deleteUser(userTwo);
+console.log(users);

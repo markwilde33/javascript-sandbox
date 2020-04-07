@@ -26,6 +26,21 @@ class User {
     // set up object properties
     this.username = username;
     this.email = email;
+    this.score = 0;
+  }
+  login(){
+    console.log(`${this.username} just logged in`);
+    return this;
+  }
+  logout(){
+    console.log(`${this.username} just logged out`);
+    return this;
+  }
+  incScore(){
+    this.score += 1;
+    console.log(`${this.username} has a score of ${this.score}`);
+    return this;
+
   }
 }
 
@@ -35,8 +50,11 @@ class User {
 // 3 - it calls the construction function to 'build' the object
 
 
-//create a new user object
+//create a new user object, or 'an instance of the user class'
 const userOne = new User('cherie', 'cherie@gmail.com');
 const userTwo = new User('sparky', 'spky@gmail.com')
 
-console.log(userOne, userTwo);
+console.log(userOne, userTwo);console.log(userOne, userTwo);
+userOne.login();userOne.login();userOne.login();
+userTwo.login();userTwo.login();userTwo.login();
+userOne.incScore();userOne.incScore();userOne.incScore();

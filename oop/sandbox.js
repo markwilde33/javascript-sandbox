@@ -32,6 +32,11 @@ class User {
 
 // class inheritance, extends the user class & has its own properties and methods also
 class Admin extends User{
+  // use the super constructor to create properties
+  constructor(username, email, title){
+    super(username, email);
+    this.title = title;
+  }
   deleteUser(user){
     //use the filter method to delete a user, cycle through the array, if the current username is not equal to the username given as an argument, then it is true and stays in the array, if its equal then its false, and gets deleted
     users = users.filter(u => u.username !== user.username);
@@ -42,10 +47,11 @@ class Admin extends User{
 const userOne = new User('cherie', 'cherie@gmail.com');
 const userTwo = new User('sparky', 'spky@gmail.com');
 //create a new admin object, or 'an instance of the admin class'
-const userThree = new Admin('admin', 'admin@admin.com')
+const userThree = new Admin('admin', 'admin@admin.com', 'black-belt-ninja');
 
 let users = [userOne, userTwo, userThree];
 console.log(users);
 
-userThree.deleteUser(userTwo);
+userThree.deleteUser(userThree);
 console.log(users);
+console.log(userThree);

@@ -54,7 +54,9 @@ class User {
 const userOne = new User('cherie', 'cherie@gmail.com');
 const userTwo = new User('sparky', 'spky@gmail.com')
 
-console.log(userOne, userTwo);console.log(userOne, userTwo);
-userOne.login();userOne.login();userOne.login();
-userTwo.login();userTwo.login();userTwo.login();
-userOne.incScore();userOne.incScore();userOne.incScore();
+// chain methods
+console.log(userOne, userTwo);
+userOne.login().logout();
+userTwo.login().logout();
+userOne.incScore().incScore().incScore();
+userTwo.incScore().incScore().incScore();

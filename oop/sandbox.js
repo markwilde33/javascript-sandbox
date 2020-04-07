@@ -88,15 +88,27 @@ Fruit.prototype.sleepyTime = function(){
   console.log(`This ${this.name} is ready for bed, night night.`);
 }
 
-
-function fruitBoss(name, color){
- Fruit.call(this, name, color)
+//use the call() method on the fruit object to inherit it's properties
+function fruitBoss(name, color, title){
+ Fruit.call(this, name, color);
+ this.title = title;
 }
+
+//get the methods from the parent Fruit object like so
+fruitBoss.prototype = Object.create(Fruit.prototype);
+
+//create a new method for the fruitBoss object only like so
+fruitBoss.prototype.deleteFruit = function(fruit){
+//code block here
+}
+
+
 
 const fruitOne = new Fruit('banana', 'yellow');
 const fruitTwo = new Fruit('apple', 'green');
-const fruitThree = new fruitBoss('apple', 'green');
+const fruitThree = new fruitBoss('apple', 'green', 'boss of fruits');
 
+console.log(fruitThree);
 veryFruity = [fruitOne, fruitTwo, fruitThree]
 console.log(veryFruity);
 console.log(fruitOne, fruitTwo, fruitThree);

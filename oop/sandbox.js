@@ -71,17 +71,23 @@ console.log(userThree);
 function Fruit(name, color){
   this.name = name;
   this.color = color;
-  this.partyTime = function(){
-    console.log(`This ${this.name} is ready to party! yeah baby yeah!`);
-    return this
-  };
+  // this.partyTime = function(){
+  //   console.log(`This ${this.name} is ready to party! yeah baby yeah!`);
+  //   return this
+  // };
 }
-
+// add methods to the Fruit prototype instead of the Fruit object, now the method is stored in _proto_ and not in the class itself, this is more efficient as its stored once, in one location, and it is useful for prototype inheritance
+Fruit.prototype.partyTime = function(){
+  console.log(`This ${this.name} is ready to party! yeah baby yeah!`);
+}
+Fruit.prototype.sleepyTime = function(){
+  console.log(`This ${this.name} is ready for bed, night night.`);
+}
 
 
 const fruitOne = new Fruit('banana', 'yellow');
 const fruitTwo = new Fruit('apple', 'green');
 
 console.log(fruitOne, fruitTwo);
-fruitOne.partyTime().partyTime();
-fruitTwo.partyTime().partyTime();
+fruitOne.partyTime();
+fruitTwo.sleepyTime();

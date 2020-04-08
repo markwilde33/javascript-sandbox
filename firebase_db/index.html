@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase database</title>
+</head>
+<body>
+  
+
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
+<script>
+  // this web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAUeC0_a94wqeX7oO2szDJXuHaQ1FWLcbo",
+    authDomain: "fir-sandbox-3804b.firebaseapp.com",
+    databaseURL: "https://fir-sandbox-3804b.firebaseio.com",
+    projectId: "fir-sandbox-3804b",
+    storageBucket: "fir-sandbox-3804b.appspot.com",
+    messagingSenderId: "298483330877",
+    appId: "1:298483330877:web:ce9248b8f133405caf1f54"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db =firebase.firestore();
+</script>
+  <script src="sandbox.js"></script>
+</body>
+</html>

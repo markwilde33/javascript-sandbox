@@ -1,6 +1,8 @@
-// get a reference to the ul & form elements 
+// get a reference to the ul, form & button elements 
 const list = document.querySelector('ul');
 const form = document.querySelector('form');
+button = document.querySelector('button');
+
 
 // function to get data from each recipe and output to the browser
 const addRecipe = (recipe, id) => {
@@ -27,7 +29,7 @@ const deleteRecipe = (id) => {
 };
 
 // real-time listener
-db.collection('recipes').onSnapshot(snapshot => {
+const unsub = db.collection('recipes').onSnapshot(snapshot => {
   snapshot.docChanges().forEach(change => {
     const doc = change.doc;
     if(change.type === 'added'){
@@ -69,4 +71,10 @@ list.addEventListener('click', e => {
       console.log('recipe deleted');
     });
   }
+  });
+
+  // unsub from database changes
+  button.addEventListener('click', () => {
+    unsub();
+    console.log('unsubscribed from collection changes, databases changes are not being shown in the browser');
   });

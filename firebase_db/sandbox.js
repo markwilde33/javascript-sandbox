@@ -16,15 +16,29 @@ const addRecipe = (recipe, id) => {
 list.innerHTML += html;
 };
 
-db.collection('recipes').get().then(snapshot => {
-  // when we have the data
-  // cycle through the array and get the data for each recipe by passing doc.data() as an argument
-  snapshot.docs.forEach(doc => {
-    addRecipe(doc.data(), doc.id);
+//delete a recipe from the dom after its been deleted from the database
+const deleteRecipe = (id) => {
+  const recipes = document.querySelectorAll('li');
+  recipes.forEach(recipe => {
+    if(recipe.getAttribute('data-id') === id){
+      recipe.remove();
+    }
   });
-}).catch(err => {
-  console.log(err)
-}); 
+};
+
+// real-time listener
+db.collection('recipes').onSnapshot(snapshot => {
+  snapshot.docChanges().forEach(change => {
+    const doc = change.doc;
+    if(change.type === 'added'){
+      // console.log(doc);
+      addRecipe(doc.data(), doc.id)
+    } else if (change.type === 'removed'){
+      deleteRecipe(doc.id);
+    }
+  });
+});
+
 
 // add document on submit
 form.addEventListener('submit', e => {

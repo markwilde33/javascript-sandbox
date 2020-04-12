@@ -1,8 +1,6 @@
-const greet = name => {
-  console.log(`hello ${name}`);
-};
+import {addTitle, styleBody, contact} from './dom';
+console.log('log index file');
 
-greet('mario');
-greet('yoshi');
-greet('booboo');
-greet('cherie');
+styleBody();
+addTitle('who shot cha?');
+console.log(contact);

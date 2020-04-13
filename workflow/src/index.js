@@ -12,3 +12,5 @@ console.log(folks);
 const sillyFolks = getSillyFolks(folks);
 console.log(folks, sillyFolks);
 console.table(folks, sillyFolks);
+
+console.log('webpack-dev-server is live');
